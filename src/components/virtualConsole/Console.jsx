@@ -1,11 +1,8 @@
+import React from "react";
 import "./console.css";
 import psLogo from "./../../assets/images/psLogo.png";
 
-const VirtualPS2 = () => {
-  const handleStartClick = () => {
-    console.log("PS2 Start button clicked!");
-  };
-
+const VirtualPS2 = ({ onPowerButtonClick }) => {
   return (
     <div className="ps2">
       <div className="ps2Layer topLayer">
@@ -13,7 +10,7 @@ const VirtualPS2 = () => {
         <div className="logo">
           <img className="logo" src={psLogo} alt="Logo" />
         </div>
-        <button className="ps2StartButton" onClick={handleStartClick}>
+        <button className="ps2StartButton" onClick={onPowerButtonClick}>
           <div style={{ display: "flex" }}>
             <div
               style={{ marginRight: "10px", fontSize: "5px", fontFamily: "" }}
