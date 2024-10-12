@@ -2,6 +2,7 @@ import VirtualPS2 from "./Console";
 import "./console.css";
 import { TV } from "../tv/TV";
 export const Ps2 = () => {
+    
   return (
     <div className="ps2-tv-setup">
       <TV /> 
