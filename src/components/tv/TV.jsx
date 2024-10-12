@@ -13,7 +13,7 @@ export const TV = ({ isOn }) => {
         const isFailure = Math.random() < 0.3; 
         setIsFailureVideo(isFailure);
         setVideoSelected(true); 
-      }, 1000);
+      }, 1500);
 
       return () => {
         clearTimeout(timer);
