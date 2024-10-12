@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Slider from "react-slick";
-import "./Carousel.css"; 
+import "./Carousel.css";
 import GTA from './../../assets/images/GTA.jpg';
 import Final_Fantasy from './../../assets/images/Final Fantasy.jpg';
 import God_of_War from './../../assets/images/God of War.jpg';
@@ -21,7 +21,7 @@ const games = [
 const GameCarousel = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedGame, setSelectedGame] = useState(null);
-  const [focusedGame, setFocusedGame] = useState(games[0]); 
+  const [focusedGame, setFocusedGame] = useState(games[0]);
   const sliderRef = useRef(null);
 
   const settings = {
@@ -38,7 +38,7 @@ const GameCarousel = () => {
     afterChange: (current) => {
       const focusedIndex = current % games.length;
       setFocusedGame(games[focusedIndex]);
-    }, 
+    },
   };
 
   const handleImageClick = (game) => {
@@ -52,10 +52,15 @@ const GameCarousel = () => {
   };
 
   return (
-    <div 
-      className="background" 
-      style={{ backgroundImage: `url(${focusedGame.imgSrc})`, backgroundSize: 'cover' }}
-    > 
+    <>
+      <div
+        className="background"
+        style={{
+          backgroundImage: focusedGame.imgSrc ? `url(${focusedGame.imgSrc})` : "none",
+          backgroundSize: 'cover',
+        }}
+      ></div>
+
       <div className="carousel-background">
         <div className="carousel-container" tabIndex="0" ref={sliderRef}>
           <Slider ref={sliderRef} {...settings}>
@@ -70,7 +75,7 @@ const GameCarousel = () => {
         </div>
         <Modal isOpen={modalOpen} onClose={handleCloseModal} game={selectedGame} />
       </div>
-    </div>
+    </>
   );
 };
 
