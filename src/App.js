@@ -1,9 +1,9 @@
 import './App.css';
-
+import { Ps2 } from './components/virtualConsole/Ps2';
 function App() {
   return (
     <div className="App">
-      Hello
+     <Ps2/>
     </div>
   );
 }
