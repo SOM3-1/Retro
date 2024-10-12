@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { FailureVideo } from './Failure';
+import React, { useState, useEffect } from "react";
+import { FailureVideo } from "./Failure";
 import "./tv.css";
-import { SuccessVideo } from './Success';
+import { SuccessVideo } from "./Success";
 
 export const TV = ({ isOn }) => {
   const [isFailureVideo, setIsFailureVideo] = useState(false);
@@ -10,14 +10,14 @@ export const TV = ({ isOn }) => {
   useEffect(() => {
     if (isOn) {
       const timer = setTimeout(() => {
-        const isFailure = Math.random() < 0.3; 
+        const isFailure = Math.random() < 0.3;
         setIsFailureVideo(isFailure);
-        setVideoSelected(true); 
+        setVideoSelected(true);
       }, 1500);
 
       return () => {
         clearTimeout(timer);
-        setVideoSelected(false); 
+        setVideoSelected(false);
       };
     } else {
       setVideoSelected(false);
@@ -26,20 +26,30 @@ export const TV = ({ isOn }) => {
 
   return (
     <>
-    <div className="tvBorder">
-      <div className="tvScreen">
-        <div className="tvScreenInner">
-          {isOn && videoSelected ? (
-            isFailureVideo ? (
-              <FailureVideo play={isOn} />
-            ) : (
-              <SuccessVideo play={isOn} />
-            )
-          ) : null} {}
+      <div className="tvBorder">
+        <div className="tvOuter">
+          <div className="tvScreen">
+            <div className="tvScreenInner">
+              {isOn && videoSelected ? (
+                isFailureVideo ? (
+                  <FailureVideo play={isOn} />
+                ) : (
+                  <SuccessVideo play={isOn} />
+                )
+              ) : null}{" "}
+              {}
+            </div>
+          </div>
+        </div>
+        <div className="buttons">
+            <div className="small"></div>
+            <div className="small"></div>
+            <div className="big"><div className="concentric"></div></div>
+            <div className="small"></div>
+            <div className="small"></div>
         </div>
       </div>
-    </div>
-    <div className='stand'></div>
+      <div className="stand"></div>
     </>
   );
 };
