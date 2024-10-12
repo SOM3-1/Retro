@@ -1,46 +1,54 @@
-import React from "react";
+// src/components/Carousel.jsx
+import React, { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
 import "./Carousel.css"; 
+import GTA from './../../assets/images/GTA.png';
+import Final_Fantasy from './../../assets/images/Final Fantasy.png';
+import God_of_War from './../../assets/images/God of War.png';
+import Burnout_3 from './../../assets/images/Burnout_3.jpg';
+import ResidentEvil1 from './../../assets/images/ResidentEvil1.png';
+import Metal_Gears_Solid_3 from './../../assets/images/Metal Gears Solid 3.png';
+import Modal from './Modal';
+
 const games = [
   {
     title: "GTA San Andreas",
-    highScore: "1638820: AAA",
-    description: "Description",
-    imgSrc: "path_to_image1", 
+    description: "An action-adventure game.",
+    imgSrc: GTA, 
   },
   {
-    title: "FInal Fantasy X",
-    highScore: "999999: BBB",
-    description: "Description",
-    imgSrc: "path_to_image2", 
+    title: "Final Fantasy X",
+    description: "A role-playing video game.",
+    imgSrc: Final_Fantasy, 
   },
   {
     title: "Burn Out 3",
-    highScore: "450000: CCC",
-    description: "Description",
-    imgSrc: "path_to_image3", 
+    description: "A racing video game.",
+    imgSrc: Burnout_3, 
   },
   {
     title: "God of War",
-    highScore: "999999: DDD",
-    description: "Description",
-    imgSrc: "path_to_image4", 
+    description: "An action-adventure game based on Greek mythology.",
+    imgSrc: God_of_War, 
   },
   {
     title: "Resident Evil",
-    highScore: "350000: EEE",
-    description: "Description",
-    imgSrc: "path_to_image5", 
+    description: "A survival horror video game.",
+    imgSrc: ResidentEvil1, 
   },
   {
-  title: "Metal gears solid 3",
-  highScore: "350000: EEE",
-  description: "Description",
-  imgSrc: "path_to_image5",
-},
+    title: "Metal Gears Solid 3",
+    description: "A stealth action video game.",
+    imgSrc: Metal_Gears_Solid_3,
+  },
 ];
 
 const GameCarousel = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedGame, setSelectedGame] = useState(null);
+  const [isFocused, setIsFocused] = useState(false); 
+  const sliderRef = useRef(null); 
+
   const settings = {
     dots: true,
     infinite: true,
@@ -50,29 +58,65 @@ const GameCarousel = () => {
     centerMode: true,
     centerPadding: "60px",
     focusOnSelect: true,
-    autoplay: true,
-    autoplaySpeed: 3000, // To simulate PS2 auto-scroll
     cssEase: "ease-in-out",
     fade: false,
   };
 
+  const handleImageClick = (game) => {
+    setSelectedGame(game);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedGame(null);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext(); 
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, 
+  []);
+
+
+  useEffect(() => {
+    setIsFocused(true); 
+
+    if (sliderRef.current) {
+      sliderRef.current.focus();
+    }
+
+    return () => setIsFocused(false); 
+  }, []);
+
   return (
-    <div className="carousel-background">
-      <div className="carousel-container">
-        <Slider {...settings}>
-          {games.map((game, index) => (
-            <div key={index} className="game-slide">
-              <div className="game-info">
-                <img src={game.imgSrc} alt={game.title} className="game-image" />
-                <h2>{game.title}</h2>
-                <p>{game.year}</p>
-                <p>{game.players}</p>
-                <p>High Score: {game.highScore}</p>
-                <p>{game.description}</p>
+    <div className="background"> {}
+      <div className={`carousel-background ${isFocused ? 'focused' : ''}`}>
+        <div className="carousel-container" tabIndex="0" ref={sliderRef}>
+          <Slider ref={sliderRef} {...settings}>
+            {games.map((game, index) => (
+              <div key={index} className="game-slide" onClick={() => handleImageClick(game)}>
+                <div className="game-info">
+                  <img src={game.imgSrc} alt={game.title} className="game-image" />
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+        </div>
+        <Modal isOpen={modalOpen} onClose={handleCloseModal} game={selectedGame} />
       </div>
     </div>
   );

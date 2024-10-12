@@ -1,15 +1,26 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
+.background {
+  background-image: url('./../../assets/images/PS2Background.png'); 
+  background-size: cover; 
+  background-position: center;
+  height: 100vh; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+}
+
 .carousel-background {
-  background: linear-gradient(135deg, #242234 0%, #3b3770 100%);
-  background-size: cover;
-  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); 
   padding-top: 60px;
-  border-radius: 80%;
   color: white;
-  position: relative;
+  position: relative; 
   overflow: hidden;
+  z-index: 1; 
+  border-radius: 8px;
 }
 
 .carousel-container {
@@ -19,62 +30,42 @@
   perspective: 1000px; 
 }
 
-/* Styling for individual game slide */
 .game-slide {
   position: relative;
-  padding: 20px;
+  padding: 0; 
   transition: transform 0.4s ease, opacity 0.4s ease;
   transform-style: preserve-3d;
   display: flex;
   flex-direction: column; 
   align-items: center; 
+  justify-content: center; 
+  height: 300px; 
+  margin: 0 20px; 
 }
 
-.slick-center .game-slide {
-  transform: scale(1.1) rotateY(0deg); 
-  z-index: 2; 
-  border-radius:100% ;
+.game-image {
+  width: 80%; 
+  height: auto; 
+  max-height: 80%; 
+  border-radius: 8px; 
+  object-fit: cover; 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
-.slick-slide {
-  opacity: 0.6;
-}
-
-.slick-center {
-  opacity: 1;
-}
-
-/* Game information box styling */
 .game-info {
   text-align: center;
-  margin-bottom: 10px;
+  margin-top: 10px; 
   font-size: 14px;
   color: white;
 }
 
-/* Game image styling */
-.game-slide {
-  background-color: rgba(0, 0, 0, 0.8); 
-  border-radius: 100%; 
-  padding: 20px;
-  width: 250px; 
-  height: 250px;
-  margin: auto; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  transform-style: preserve-3d;
-}
 
-/* Hover effect to simulate the PS2 carousel zoom */
 .game-slide:hover .game-image {
   transform: scale(1.05);
 }
 
-/* PS2-like carousel dot style */
+
 .slick-dots li button:before {
   font-size: 12px;
   color: white;
@@ -90,17 +81,11 @@ body {
   background-color: #121212;
 }
 
+
 .slick-slide {
   opacity: 0.6;
 }
+
 .slick-center {
   opacity: 1;
-}
-.game-image {
-  width: 100px; 
-  height: 100px; 
-  border-radius: 50%;
-  object-fit: cover; 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  margin-bottom: 10px;
 }
