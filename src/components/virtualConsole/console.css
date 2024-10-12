@@ -58,9 +58,10 @@
   width: 350px;
   height: 200px;
   position: relative;
-  transform: scale(2);
+  transform: scale(1);
   transform-style: preserve-3d; 
   perspective: 800px;
+  margin-top: -60px;
 }
 
 .ps2Layer {
@@ -180,4 +181,17 @@
   background: linear-gradient(to bottom, #1a0080, #2a92e8); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.ps2-tv-setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 500px;
+  height: auto;
+}
+
+.cable {
+  margin-top: -170px; 
 }

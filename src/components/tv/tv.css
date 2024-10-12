@@ -1,0 +1,28 @@
+.tvBorder {
+    width: 580px;
+    height: 380px;
+    background-color: rgb(168, 157, 157); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    position: relative;
+    margin-top: -200px;
+  }
+  
+  .tvScreen {
+    width: 520px;
+    height: 340px;
+    background-color: black; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  .tvScreenInner {
+    color: white;
+    font-size: 16px;
+  }
+  
