@@ -1,51 +1,45 @@
-import React, { useRef, useEffect } from 'react';
-import videoFile from "./../../assets/videos/successful.mp4";
+import React, { useState, useEffect } from 'react';
+import { FailureVideo } from './Failure';
 import "./tv.css";
+import { SuccessVideo } from './Success';
 
 export const TV = ({ isOn }) => {
-  const videoRef = useRef(null);
+  const [isFailureVideo, setIsFailureVideo] = useState(false);
+  const [videoSelected, setVideoSelected] = useState(false);
 
   useEffect(() => {
     if (isOn) {
       const timer = setTimeout(() => {
-        playVideo();
-      }, 1000); 
+        const isFailure = Math.random() < 0.3; 
+        setIsFailureVideo(isFailure);
+        setVideoSelected(true); 
+      }, 1000);
 
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        setVideoSelected(false); 
+      };
     } else {
-      stopAndResetVideo();
+      setVideoSelected(false);
     }
   }, [isOn]);
 
-  const playVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
-  };
-
-  const stopAndResetVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
-
   return (
+    <>
     <div className="tvBorder">
       <div className="tvScreen">
         <div className="tvScreenInner">
-          <video
-            ref={videoRef}
-            width="520"
-            height="340"
-            controls={false}
-            style={{ display: isOn ? 'block' : 'none' }} 
-          >
-            <source src={videoFile} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          {isOn && videoSelected ? (
+            isFailureVideo ? (
+              <FailureVideo play={isOn} />
+            ) : (
+              <SuccessVideo play={isOn} />
+            )
+          ) : null} {}
         </div>
       </div>
     </div>
+    <div className='stand'></div>
+    </>
   );
 };

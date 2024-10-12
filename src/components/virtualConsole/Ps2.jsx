@@ -15,7 +15,7 @@ export const Ps2 = () => {
       <TV isOn={isTVOn} />
       <svg className="cable" width="500" height="400">
         <path
-          d="M180,150 C180,300 10,350 260,400 
+          d="M180,150 C180,300 0,250 260,400 
           C340,450 350,500 320,530"
           stroke="black"
           strokeWidth="5"
@@ -23,7 +23,7 @@ export const Ps2 = () => {
         />
       </svg>
       <VirtualPS2 onPowerButtonClick={handlePowerButtonClick} />
-      <div className="intro">Click on the power button to boot PS2</div>
+      {/* <div className="intro">Click on the power button to boot PS2</div> */}
     </div>
   );
 };
