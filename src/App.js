@@ -8,9 +8,7 @@ function App() {
     <div className="App">
     <Router>
         <Routes>
-        <Route path="/" element={<div>Hello</div>} />
-
-          <Route path="/console" element={<Ps2 />} />
+          <Route path="/" element={<Ps2 />} />
           <Route path="/games" element={<GameCarousel />} />
         </Routes>
       </Router>
