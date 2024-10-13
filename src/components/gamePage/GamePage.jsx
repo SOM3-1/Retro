@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setScreen } from "../store/uiSlice";
 import "./GamePage.css"; 
 import "./../Carousel/Carousel.css"
+import MusicPlayer from "../music/MusicPlayer";
 
 export const GamePage = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export const GamePage = () => {
   }
 
   return (
+    <>
     <div className="game-page" style={{ backgroundImage: `url(${selectedGame.imgSrc})` }}>
       <div className="left-half">
         <div className="game-card">
@@ -68,6 +70,8 @@ export const GamePage = () => {
         </div>
       </div>
     </div>
+    <MusicPlayer/>
+    </>
   );
 };
 

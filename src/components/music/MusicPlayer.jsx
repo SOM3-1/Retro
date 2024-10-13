@@ -15,7 +15,6 @@ const musicFiles = [
 const MusicPlayer = () => {
   const [isMuted, setIsMuted] = useState(true); 
   const [currentSong, setCurrentSong] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false); // Track if the song is playing
   const audioRef = useRef(new Audio());
 
   const shuffleAndPlay = () => {
@@ -23,23 +22,26 @@ const MusicPlayer = () => {
     const selectedSong = musicFiles[randomIndex];
     setCurrentSong(selectedSong);
     audioRef.current.src = selectedSong;
-    audioRef.current.muted = isMuted;
-
-    // Ensure the audio resource is fully loaded before playing
-    audioRef.current.oncanplay = () => {
-      audioRef.current.play();
-      setIsPlaying(true);
-      setIsMuted(false); // Ensure it's unmuted once a song plays
-    };
-    
-    // Load the new song
-    audioRef.current.load();
+    // audioRef.current.play();
+    // setIsMuted(false);
   };
 
+  const  shuffle = () => {
+    const randomIndex = Math.floor(Math.random() * musicFiles.length);
+    const selectedSong = musicFiles[randomIndex];
+    setCurrentSong(selectedSong);
+    audioRef.current.src = selectedSong;
+    audioRef.current.play();
+    setIsMuted(false);
+
+  }
   useEffect(() => {
+    shuffleAndPlay(); 
+    audioRef.current.muted = true;  
+
     const handleKeyDown = (event) => {
       if (event.key.toLowerCase() === 's') {
-        shuffleAndPlay(); 
+        shuffle(); 
       }
     };
 
@@ -49,20 +51,16 @@ const MusicPlayer = () => {
       window.removeEventListener('keydown', handleKeyDown);
       audioRef.current.pause();
     };
-  }, [isMuted, isPlaying]);
+  }, []);
 
   const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
+    if (isMuted) {
+      audioRef.current.muted = false;
       audioRef.current.play();
-      setIsPlaying(true);
+    } else {
+      audioRef.current.muted = true;
+      audioRef.current.pause();
     }
-  };
-
-  const toggleMute = () => {
-    audioRef.current.muted = !isMuted;
     setIsMuted(!isMuted);
   };
 
@@ -96,10 +94,6 @@ const MusicPlayer = () => {
           />
         )}
       </div>
-
-      <button onClick={toggleMute}>
-        {isMuted ? 'Unmute' : 'Mute'}
-      </button>
     </div>
   );
 };
