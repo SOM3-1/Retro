@@ -42,11 +42,11 @@ export const TV = ({ isOn }) => {
           </div>
         </div>
         <div className="buttons">
-            <div className="small"></div>
-            <div className="small"></div>
-            <div className="big"><div className="concentric"></div></div>
-            <div className="small"></div>
-            <div className="small"></div>
+            <button className="small" onClick={console.log("")}></button>
+            <button className="small"></button>
+            <button className="big"></button>
+            <button className="small"></button>
+            <button className="small"></button>
         </div>
       </div>
       <div className="stand"></div>
