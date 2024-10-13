@@ -136,8 +136,8 @@ const GameCarousel = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [focusedGame]);
+
   const handleImageClick = (game) =>{
-    
     dispatch(setSelected(game));
     dispatch(setScreen(3))
   }

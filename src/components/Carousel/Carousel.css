@@ -176,10 +176,10 @@ body {
 
 @keyframes rock {
   25% {
-    transform: rotate(30deg);
+    transform: rotate(10deg);
   }
   75% {
-    transform: rotate(-30deg);
+    transform: rotate(-10deg);
   }
 }
 
