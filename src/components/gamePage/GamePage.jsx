@@ -13,7 +13,7 @@ export const GamePage = () => {
   };
 
   const handleCancel = () => {
-    dispatch(setScreen(1));
+    dispatch(setScreen(2));
   };
 
   useEffect(() => {
