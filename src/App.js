@@ -1,17 +1,16 @@
 import './App.css';
 import GameCarousel from './components/Carousel/Carousel';
+import { GamePage } from './components/gamePage/GamePage';
 import { Ps2 } from './components/virtualConsole/Ps2';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
+  const screen = useSelector((state) => state.ui.screen); 
   return (
     <div className="App">
-    <Router>
-        <Routes>
-          <Route path="/" element={<Ps2 />} />
-          <Route path="/games" element={<GameCarousel />} />
-        </Routes>
-      </Router>
+    {screen === 1 && <Ps2 />} 
+      {screen === 2 && <GameCarousel />}  
+      {screen === 3 && <GamePage />}  
     </div>
   );
 }

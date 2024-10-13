@@ -8,9 +8,11 @@ import './assets/fonts/Chalice.ttf'
 import './assets/fonts/Johnny.otf'
 import './assets/fonts/MyGirlIsRetro.ttf'
 import './assets/fonts/rimouski.otf'
+import { Provider } from 'react-redux';
+import { store } from './components/store/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>,
 );

@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import videoFile from "./../../assets/videos/successful.mp4";
+import { setScreen } from '../store/uiSlice';
 
 export const SuccessVideo = ({ play }) => {
   const videoRef = useRef(null);
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (play && videoRef.current) {
@@ -16,7 +17,7 @@ export const SuccessVideo = ({ play }) => {
   }, [play]);
 
   const handleVideoEnd = () => {
-   navigate('/games'); 
+    dispatch(setScreen(2));
   };
 
   return (

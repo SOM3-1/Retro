@@ -7,25 +7,90 @@ import God_of_War from './../../assets/images/GodofWar.jpg';
 import Burnout_3 from './../../assets/images/Burnout_3.jpg';
 import ResidentEvil1 from './../../assets/images/ResidentEvil1.jpg';
 import Metal_Gears_Solid_3 from './../../assets/images/MetalGearsSolid3.jpg';
-import Modal from './Modal';
 import { TopBar } from "./TopBar";
-import { useNavigate } from 'react-router-dom'; 
+import { useDispatch } from 'react-redux';
+import { setScreen, setSelected } from "../store/uiSlice";
 
 const games = [
-  { title: "GTA San Andreas", description: "An action-adventure game.", imgSrc: GTA },
-  { title: "Final Fantasy X", description: "A role-playing video game.", imgSrc: Final_Fantasy },
-  { title: "Burn Out 3", description: "A racing video game.", imgSrc: Burnout_3 },
-  { title: "God of War", description: "An action-adventure game based on Greek mythology.", imgSrc: God_of_War },
-  { title: "Resident Evil", description: "A survival horror video game.", imgSrc: ResidentEvil1 },
-  { title: "Metal Gears Solid 3", description: "A stealth action video game.", imgSrc: Metal_Gears_Solid_3 },
+  { 
+    title: "GTA San Andreas", 
+    description: "An action-adventure game set in an open world environment, developed by Rockstar Games.",
+    imgSrc: GTA,
+    releaseDate: "October 26, 2004",
+    developer: "Rockstar North",
+    genre: "Action-adventure",
+    platform: "PlayStation 2",
+    rating: "Mature (17+)",
+    moreInfo: "San Andreas is set within the fictional U.S. state of San Andreas, which is heavily based on California and Nevada.",
+    code:'GA'
+  },
+  { 
+    title: "Final Fantasy X", 
+    description: "A role-playing video game that introduced fully 3D backgrounds and voice acting for the first time in the series.",
+    imgSrc: Final_Fantasy,
+    releaseDate: "July 19, 2001",
+    developer: "SquareSoft",
+    genre: "Role-playing",
+    platform: "PlayStation 2",
+    rating: "Teen (13+)",
+    moreInfo: "Final Fantasy X marked a significant shift in the series, featuring a rich story set in the world of Spira.",
+    code: 'FF'
+  },
+  { 
+    title: "Burn Out 3", 
+    description: "A fast-paced racing game with an emphasis on aggressive driving and spectacular crashes.",
+    imgSrc: Burnout_3,
+    releaseDate: "September 8, 2004",
+    developer: "Criterion Games",
+    genre: "Racing",
+    platform: "PlayStation 2",
+    rating: "Everyone (10+)",
+    moreInfo: "Burnout 3: Takedown added the popular 'Takedown' feature, which allows players to crash opponents into walls and other obstacles.",
+    code: 'BO'
+  },
+  { 
+    title: "God of War", 
+    description: "An action-adventure game based on Greek mythology, following the journey of Kratos, a warrior seeking revenge.",
+    imgSrc: God_of_War,
+    releaseDate: "March 22, 2005",
+    developer: "Santa Monica Studio",
+    genre: "Action-adventure",
+    platform: "PlayStation 2",
+    rating: "Mature (17+)",
+    moreInfo: "God of War introduced players to Kratos and his brutal fighting style, setting a new standard for action games.",
+    code: 'GW'
+  },
+  { 
+    title: "Resident Evil", 
+    description: "A survival horror game where players explore a mansion filled with zombies and other terrifying creatures.",
+    imgSrc: ResidentEvil1,
+    releaseDate: "March 22, 1996",
+    developer: "Capcom",
+    genre: "Survival horror",
+    platform: "PlayStation",
+    rating: "Mature (17+)",
+    moreInfo: "Resident Evil revolutionized the survival horror genre with its emphasis on resource management and atmosphere.",
+    code: 'RE'
+  },
+  { 
+    title: "Metal Gear Solid 3", 
+    description: "A stealth action game that takes place during the Cold War, following the mission of Naked Snake.",
+    imgSrc: Metal_Gears_Solid_3,
+    releaseDate: "November 17, 2004",
+    developer: "Kojima Productions",
+    genre: "Stealth action",
+    platform: "PlayStation 2",
+    rating: "Mature (17+)",
+    moreInfo: "Metal Gear Solid 3 is renowned for its detailed survival mechanics and deep, intricate storyline.",
+    code: 'MS'
+  }
 ];
 
+
 const GameCarousel = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedGame, setSelectedGame] = useState(null);
   const [focusedGame, setFocusedGame] = useState(games[0]);
   const sliderRef = useRef();
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const settings = {
     dots: false,
@@ -46,17 +111,6 @@ const GameCarousel = () => {
     slickDots: false
   };
 
-  const handleImageClick = (game) => {
-    setSelectedGame(game);
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-    setSelectedGame(null);
-  };
-
-
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (sliderRef.current) {
@@ -66,11 +120,13 @@ const GameCarousel = () => {
           sliderRef?.current?.slickPrev();
         }
         else if (event.key.toLowerCase() === "x") {
-          setSelectedGame(focusedGame);
-          setModalOpen(true);
+          if (focusedGame) {
+            dispatch(setSelected(focusedGame));
+            dispatch(setScreen(3));
+          }
         }
         else if (event.key.toLowerCase() === "o") {
-         navigate('/')
+        dispatch(setScreen(1))
         }
       }
     };
@@ -80,7 +136,11 @@ const GameCarousel = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [focusedGame]);
-
+  const handleImageClick = (game) =>{
+    
+    dispatch(setSelected(game));
+    dispatch(setScreen(3))
+  }
 
   return (
     <>
@@ -104,7 +164,6 @@ const GameCarousel = () => {
             ))}
           </Slider>
         </div>
-        <Modal isOpen={modalOpen} onClose={handleCloseModal} game={selectedGame} />
       </div>
       <div className="ps2-text-container">
         <div className="ps2-text">
