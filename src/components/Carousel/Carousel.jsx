@@ -8,7 +8,7 @@ import Burnout_3 from './../../assets/images/Burnout_3.jpg';
 import ResidentEvil1 from './../../assets/images/ResidentEvil1.jpg';
 import Metal_Gears_Solid_3 from './../../assets/images/MetalGearsSolid3.jpg';
 import { TopBar } from "./TopBar";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { setScreen, setSelected } from "../store/uiSlice";
 import MusicPlayer from "../music/MusicPlayer";
 
@@ -89,9 +89,15 @@ const games = [
 
 
 const GameCarousel = () => {
-  const [focusedGame, setFocusedGame] = useState(games[0]);
+
+  const selectedGame = useSelector((state) => state.ui.selectedGame);
+  const [focusedGame, setFocusedGame] = useState(selectedGame || games[0]);
   const sliderRef = useRef();
   const dispatch = useDispatch();
+
+  const initialSlideIndex = selectedGame 
+  ? games.findIndex(game => game.title === selectedGame.title) 
+  : 0;
 
   const settings = {
     dots: false,
@@ -104,6 +110,7 @@ const GameCarousel = () => {
     focusOnSelect: false,
     cssEase: "ease-in-out",
     fade: false,
+    initialSlide: initialSlideIndex,
     afterChange: (current) => {
       const focusedIndex = current % games.length;
       setFocusedGame(games[focusedIndex]);
@@ -154,7 +161,7 @@ const GameCarousel = () => {
       ></div>
       <TopBar />
       <div className="carousel-background">
-        <div className="carousel-container" tabIndex="0" ref={sliderRef}>
+        <div className="carousel-container" tabIndex={initialSlideIndex} ref={sliderRef}>
           <Slider ref={sliderRef} {...settings}>
             {games.map((game, index) => (
               <div key={index} className="game-slide" onClick={() => handleImageClick(game)}>
