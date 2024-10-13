@@ -78,3 +78,12 @@ body {
 .slick-center {
   opacity: 1;
 }
+
+@keyframes preload {
+  0% { background-image: url('./../../assets/images/GTA.jpg'); }
+  20% { background-image: url('./../../assets/images/FinalFantasy.jpg'); }
+  40% { background-image: url('./../../assets/images/Burnout_3.jpg'); }
+  60% { background-image: url('./../../assets/images/GodofWar.jpg'); }
+  80% { background-image: url('./../../assets/images/ResidentEvil1.jpg'); }
+  100% { background-image: url('./../../assets/images/MetalGearsSolid3.jpg'); }
+}

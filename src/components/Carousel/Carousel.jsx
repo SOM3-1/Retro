@@ -1,12 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
 import "./Carousel.css";
 import GTA from './../../assets/images/GTA.jpg';
-import Final_Fantasy from './../../assets/images/Final Fantasy.jpg';
-import God_of_War from './../../assets/images/God of War.jpg';
+import Final_Fantasy from './../../assets/images/FinalFantasy.jpg';
+import God_of_War from './../../assets/images/GodofWar.jpg';
 import Burnout_3 from './../../assets/images/Burnout_3.jpg';
 import ResidentEvil1 from './../../assets/images/ResidentEvil1.jpg';
-import Metal_Gears_Solid_3 from './../../assets/images/Metal Gears Solid 3.jpg';
+import Metal_Gears_Solid_3 from './../../assets/images/MetalGearsSolid3.jpg';
 import Modal from './Modal';
 
 const games = [
@@ -25,20 +25,23 @@ const GameCarousel = () => {
   const sliderRef = useRef(null);
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 700,
     slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: "60px",
-    focusOnSelect: true,
+    focusOnSelect: false,
     cssEase: "ease-in-out",
     fade: false,
     afterChange: (current) => {
       const focusedIndex = current % games.length;
       setFocusedGame(games[focusedIndex]);
+      console.log(focusedGame)
     },
+    lazyLoad: false,
+    slickDots: false
   };
 
   const handleImageClick = (game) => {
@@ -50,7 +53,7 @@ const GameCarousel = () => {
     setModalOpen(false);
     setSelectedGame(null);
   };
-
+  
   return (
     <>
       <div
