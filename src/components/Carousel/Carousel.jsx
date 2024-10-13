@@ -22,8 +22,8 @@ const GameCarousel = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedGame, setSelectedGame] = useState(null);
   const [focusedGame, setFocusedGame] = useState(games[0]);
-  const sliderRef = useRef(null);
-
+  const sliderRef = useRef();
+  
   const settings = {
     dots: false,
     infinite: true,
@@ -38,7 +38,6 @@ const GameCarousel = () => {
     afterChange: (current) => {
       const focusedIndex = current % games.length;
       setFocusedGame(games[focusedIndex]);
-      console.log(focusedGame)
     },
     lazyLoad: false,
     slickDots: false
@@ -54,6 +53,29 @@ const GameCarousel = () => {
     setSelectedGame(null);
   };
   
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        if (event.key === "ArrowRight") {
+          sliderRef?.current?.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef?.current?.slickPrev();
+        }
+        else if (event.key.toLowerCase() === "x") {
+          setSelectedGame(focusedGame);
+          setModalOpen(true);
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+
   return (
     <>
       <div
@@ -66,7 +88,7 @@ const GameCarousel = () => {
 
       <div className="carousel-background">
         <div className="carousel-container" tabIndex="0" ref={sliderRef}>
-          <Slider ref={sliderRef} {...settings}>
+        <Slider ref={sliderRef} {...settings}>
             {games.map((game, index) => (
               <div key={index} className="game-slide" onClick={() => handleImageClick(game)}>
                 <div className="game-info">
@@ -78,6 +100,7 @@ const GameCarousel = () => {
         </div>
         <Modal isOpen={modalOpen} onClose={handleCloseModal} game={selectedGame} />
       </div>
+      <div class="ps2-text">Press <span class="ps2-button"> X</span>to Select</div>
     </>
   );
 };

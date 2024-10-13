@@ -26,3 +26,31 @@ code {
    url("./assets/fonts/ps2_1.ttf") format("truetype");
   font-weight: bold;
  }
+
+ @font-face {
+  font-family: "chalice";
+  src: local("Chalice"),
+   url("./assets/fonts/Chalice.ttf") format("truetype");
+  font-weight: bold;
+ }
+
+ @font-face {
+  font-family: "johnny";
+  src: local("Johnny"),
+   url("./assets/fonts/Johnny.otf") format("truetype");
+  font-weight: bold;
+ }
+
+ @font-face {
+  font-family: "mygirlsretro";
+  src: local("Johnny"),
+   url("./assets/fonts/MyGirlIsRetro.ttf") format("truetype");
+  font-weight: bold;
+ }
+
+ @font-face {
+  font-family: "rimouski";
+  src: local("rimouski"),
+   url("./assets/fonts/rimouski.otf") format("truetype");
+  font-weight: bold;
+ }

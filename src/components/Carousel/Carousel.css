@@ -87,3 +87,38 @@ body {
   80% { background-image: url('./../../assets/images/ResidentEvil1.jpg'); }
   100% { background-image: url('./../../assets/images/MetalGearsSolid3.jpg'); }
 }
+
+.ps2-text {
+  font-family: 'johnny', 'Arial', sans-serif; 
+  font-size: 48px;
+  color: white;
+  text-align: center;
+  margin-top: 200px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+  animation: pulse 1.5s infinite;
+  z-index: 5;
+  position: absolute;
+  bottom: 100px
+}
+
+.ps2-button {
+  background-color: blue; 
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 42px; 
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
