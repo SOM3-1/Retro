@@ -15,7 +15,7 @@
 }
 
 .carousel-background {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   color: white;
   position: absolute;
   bottom: 200px;
@@ -27,7 +27,7 @@
 }
 
 .carousel-container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding: 0;
   perspective: 1000px;
@@ -47,7 +47,7 @@
 }
 
 .game-image {
-  width: 400px;
+  width: 450px;
   height: 300px;
   max-height: 80%;
   border-radius: 8px;
@@ -96,19 +96,19 @@ body {
   margin-top: 200px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
   animation: pulse 1.5s infinite;
-  z-index: 5;
-  position: absolute;
-  bottom: 100px
 }
 
 .ps2-button {
-  background-color: blue; 
+  background-color: rgb(0, 0, 0); 
   color: white;
   padding: 10px 20px;
   border-radius: 50%;
   display: inline-block;
   margin-right: 10px;
   font-size: 42px; 
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 @keyframes pulse {
@@ -121,4 +121,144 @@ body {
   100% {
     opacity: 1;
   }
+}
+
+.top-left-info, .top-right-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: 'chalice', sans-serif;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.top-left-info div,
+.top-right-info div {
+  margin-right: 20px; 
+}
+
+.top-left-info {
+  top: 20px;
+  left: 20px;
+  position: absolute;
+}
+
+.top-right-info {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+}
+
+.ps-icon {
+  width: 20px;
+  height: 48px;
+  animation: rock 1s infinite ease-in-out; 
+}
+
+.achievements {
+  display: flex;
+  align-items: center;
+}
+
+.achievements-icon {
+  width: 32px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+.achievements-count {
+  font-size: 38px;
+  font-family: 'chalice', sans-serif;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+@keyframes rock {
+  25% {
+    transform: rotate(30deg);
+  }
+  75% {
+    transform: rotate(-30deg);
+  }
+}
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.ps-icon {
+  width: 50px;
+  height: 40px;
+}
+
+.icon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(219, 219, 224, 0.5);
+  mix-blend-mode: multiply; 
+  pointer-events: none; 
+}
+
+.memory-card-info, .player-info {
+  font-size: 28px; 
+  font-family: 'chalice', sans-serif;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 5px;
+}
+
+.ps2-text-container {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 50px; 
+  left: 0;
+  right: 0;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 40px;
+  z-index: 5;
+  font-family: 'johnny', 'Arial', sans-serif; 
+  font-size: 48px;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  animation: pulse 1.5s infinite;
+}
+
+.ps2-text {
+  text-align: left;
+}
+
+.ps2-close-text {
+  font-family: 'johnny', 'Arial', sans-serif; 
+  font-size: 48px;
+  color: white;
+  text-align: center;
+  margin-top: 200px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+  animation: pulse 1.5s infinite;
+  text-align: right;
+}
+
+.ps2-button-x {
+  color: #007AFF;
+  padding: 10px 20px;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 42px;
+  font-family: '' ;
+}
+
+.ps2-button-o {
+  color: #FF3B30; 
+  padding: 10px 20px;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 42px;
+  font-family: '' ;
 }

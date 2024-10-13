@@ -8,6 +8,8 @@ import Burnout_3 from './../../assets/images/Burnout_3.jpg';
 import ResidentEvil1 from './../../assets/images/ResidentEvil1.jpg';
 import Metal_Gears_Solid_3 from './../../assets/images/MetalGearsSolid3.jpg';
 import Modal from './Modal';
+import { TopBar } from "./TopBar";
+import { useNavigate } from 'react-router-dom'; 
 
 const games = [
   { title: "GTA San Andreas", description: "An action-adventure game.", imgSrc: GTA },
@@ -23,7 +25,8 @@ const GameCarousel = () => {
   const [selectedGame, setSelectedGame] = useState(null);
   const [focusedGame, setFocusedGame] = useState(games[0]);
   const sliderRef = useRef();
-  
+  const navigate = useNavigate();
+
   const settings = {
     dots: false,
     infinite: true,
@@ -52,7 +55,7 @@ const GameCarousel = () => {
     setModalOpen(false);
     setSelectedGame(null);
   };
-  
+
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -66,6 +69,9 @@ const GameCarousel = () => {
           setSelectedGame(focusedGame);
           setModalOpen(true);
         }
+        else if (event.key.toLowerCase() === "o") {
+         navigate('/')
+        }
       }
     };
 
@@ -73,7 +79,7 @@ const GameCarousel = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [focusedGame]);
 
 
   return (
@@ -85,10 +91,10 @@ const GameCarousel = () => {
           backgroundSize: 'cover',
         }}
       ></div>
-
+      <TopBar />
       <div className="carousel-background">
         <div className="carousel-container" tabIndex="0" ref={sliderRef}>
-        <Slider ref={sliderRef} {...settings}>
+          <Slider ref={sliderRef} {...settings}>
             {games.map((game, index) => (
               <div key={index} className="game-slide" onClick={() => handleImageClick(game)}>
                 <div className="game-info">
@@ -100,7 +106,14 @@ const GameCarousel = () => {
         </div>
         <Modal isOpen={modalOpen} onClose={handleCloseModal} game={selectedGame} />
       </div>
-      <div class="ps2-text">Press <span class="ps2-button"> X</span>to Select</div>
+      <div className="ps2-text-container">
+        <div className="ps2-text">
+          Press <span className="ps2-button ps2-button-x"> X</span> to Select
+        </div>
+        <div className="ps2-close-text">
+          Press <span className="ps2-button ps2-button-o"> O</span> to Close
+        </div>
+      </div>
     </>
   );
 };
