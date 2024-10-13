@@ -10,6 +10,7 @@ import Metal_Gears_Solid_3 from './../../assets/images/MetalGearsSolid3.jpg';
 import { TopBar } from "./TopBar";
 import { useDispatch } from 'react-redux';
 import { setScreen, setSelected } from "../store/uiSlice";
+import MusicPlayer from "../music/MusicPlayer";
 
 const games = [
   { 
@@ -173,6 +174,7 @@ const GameCarousel = () => {
           Press <span className="ps2-button ps2-button-o"> O</span> to Close
         </div>
       </div>
+      <MusicPlayer/>
     </>
   );
 };
