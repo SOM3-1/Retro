@@ -1,0 +1,56 @@
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: "ps2";
+  src: local("ps2"),
+   url("./assets/fonts/ps2.ttf") format("truetype");
+  font-weight: bold;
+ }
+
+ @font-face {
+  font-family: "ps21";
+  src: local("ps21"),
+   url("./assets/fonts/ps2_1.ttf") format("truetype");
+  font-weight: bold;
+ }
+
+ @font-face {
+  font-family: "chalice";
+  src: local("Chalice"),
+   url("./assets/fonts/Chalice.ttf") format("truetype");
+  font-weight: bold;
+ }
+
+ @font-face {
+  font-family: "johnny";
+  src: local("Johnny"),
+   url("./assets/fonts/Johnny.otf") format("truetype");
+  font-weight: bold;
+ }
+
+ @font-face {
+  font-family: "mygirlsretro";
+  src: local("Johnny"),
+   url("./assets/fonts/MyGirlIsRetro.ttf") format("truetype");
+  font-weight: bold;
+ }
+
+ @font-face {
+  font-family: "rimouski";
+  src: local("rimouski"),
+   url("./assets/fonts/rimouski.otf") format("truetype");
+  font-weight: bold;
+ }

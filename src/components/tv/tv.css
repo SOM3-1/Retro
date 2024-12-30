@@ -1,0 +1,77 @@
+.tvBorder {
+    width: 600px;
+    height: 420px;
+    background-color: rgb(184, 185, 188);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+.tvScreen {
+    width: 520px;
+    height: 340px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.tvOuter {
+    width: 540px;
+    height: 360px;
+    background-color: #8c8e94;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.tvScreenInner {
+    color: white;
+    font-size: 16px;
+}
+
+.stand {
+    width: 300px;
+    height: 20px;
+    background-color: #8c8e94;
+    margin-top: -20px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 4px;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-self: center;
+    align-items: center;
+}
+
+.small {
+    background-color: #8c8e94;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+}
+
+.big {
+    background-color: #8c8e94;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+}
+.concentric {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%; 
+    border: 2px solid black; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

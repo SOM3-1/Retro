@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.game-page {
+    display: flex;
+    height: 100vh; 
+    width: 100vw;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    color: white;
+  }
+  
+  .left-half {
+    width: 50%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .game-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  
+  .game-images {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .game-title {
+    font-family: "johnny", sans-serif;
+    font-size: 36px;
+    margin-top: 20px;
+  }
+  
+  .game-description {
+    margin: 10px 0;
+
+    font-family: "Press Start 2P", cursive;
+    font-size: 16px; 
+  }
+  
+  .game-details {
+    font-family: "johnny", sans-serif;
+    list-style: none;
+    padding: 0;
+    color: red; 
+    font-family: "Press Start 2P", cursive;
+    font-size: 12px; 
+  }
+  
+  .game-details li {
+    margin: 5px 0;
+  }
+  
+  .right-half {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+  }
+  
+  .retro-controls {
+    text-align: center;
+  }
+  
+  
+  .retro-btn {
+    font-family: "Press Start 2P", cursive;
+    font-size: 16px;
+    padding: 15px 30px;
+    margin: 10px 0;
+    background-color: #00ff00; 
+    color: black;
+    border: 3px solid black; 
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6); 
+    transition: all 0.3s ease;
+}
+
+.start-btn {
+    background-color: #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6);
+}
+
+.cancel-btn {
+    background-color: #ff0000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.retro-btn:hover {
+    background-color: #0000ff;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.8), 0 0 20px rgba(0, 0, 255, 0.6);
+}
